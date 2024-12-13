@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.al-center {
+  align-items: center;
+}
+
+.al-start {
+  align-items: flex-start;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.jc-start {
+  justify-content: flex-start;
+}
+
+.jc-space-between {
+  justify-content: space-between;
+}
+
+.jc-end {
+  justify-content: flex-end;
+}
+
+.custom-divider {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+#logo-img {
+  max-width: 150px;
+  margin-bottom: 2rem;
+}
+
+.bottom-info {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.links a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Certifique-se de que o spinner esteja acima de outros elementos */
+}
+
+
+.link-button {
+  background: none;
+  border: none;
+  color: #1976d2;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 0;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  color: #1565c0;
+}

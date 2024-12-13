@@ -1,0 +1,42 @@
+.logout-dialog {
+  width: 400px; /* Largura do card */
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fafafa; /* Cor de fundo suave */
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  color: #333;
+}
+
+.content {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.cancel-btn {
+  width: 48%;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.logout-btn {
+  width: 48%;
+  text-transform: none;
+  font-weight: 500;
+  color: #ff0000;
+}
+
+mat-divider {
+  margin: 10px 0;
+}

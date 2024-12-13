@@ -1,0 +1,41 @@
+<mat-card class="login-dialog">
+  <form [formGroup]="loginForm">
+    <h1 class="title">Bem-vindo ao Sistema de Vagas Internas</h1>
+    <p class="description">Entre com suas credenciais para acessar.</p>
+
+    <mat-form-field>
+      <mat-label>Usuário</mat-label>
+      <mat-icon matPrefix>person</mat-icon>
+      <input matInput formControlName="username" placeholder="Digite seu nome de usuário" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Senha</mat-label>
+      <mat-icon matPrefix>lock</mat-icon>
+      <input matInput type="password" formControlName="password" placeholder="Digite sua senha" />
+    </mat-form-field>
+
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+
+    <div *ngIf="isLoading" class="loading-container">
+      <mat-spinner></mat-spinner>
+      <span></span>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="onLogin()" class="login-button">
+      <mat-icon fontIcon="login"></mat-icon>
+      <span *ngIf="!isLoading">Entrar</span>
+    </button>
+
+
+    <mat-divider></mat-divider>
+    <div class="register-section">
+      <span>Não possui uma conta?</span>
+      <button mat-stroked-button (click)="onGoToRegister()"  class="link-button">
+        Registre-se
+      </button>
+    </div>
+  </form>
+</mat-card>

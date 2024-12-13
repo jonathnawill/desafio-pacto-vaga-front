@@ -1,0 +1,42 @@
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  height: 60px;
+  -webkit-box-shadow: 0px 0px 11px 2px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 0px 0px 11px 2px rgba(0, 0, 0, 0.59);
+  box-shadow: 0px 0px 11px 2px rgba(0, 0, 0, 0.59);
+}
+
+/* Estilização para o avatar */
+.user-avatar {
+  width: 40px;  /* Ajuste o tamanho do avatar */
+  height: 40px; /* Ajuste o tamanho do avatar */
+  border-radius: 50%; /* Deixa o avatar redondo */
+  object-fit: cover;  /* Garante que a imagem se ajuste bem */
+}
+
+mat-chip {
+  padding: 0.5rem;  /* Ajusta o padding para dar mais espaço ao chip */
+  font-size: 14px;  /* Ajusta o tamanho da fonte, caso necessário */
+}
+
+
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.logo {
+  width: 100px;
+  margin: 20px;
+}
+.app-title {
+}
+
+@media (max-width: 450px) {
+  .app-title {
+    display: none;
+  }
+}

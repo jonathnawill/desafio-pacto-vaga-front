@@ -1,0 +1,48 @@
+<mat-card class="login-dialog">
+  <form [formGroup]="registerForm">
+    <h1 class="title">Bem-vindo ao Sistema de Registro</h1>
+    <p class="description">Preencha os dados abaixo para criar sua conta.</p>
+
+    <mat-form-field>
+      <mat-label>Nome Completo</mat-label>
+      <mat-icon matPrefix>person</mat-icon>
+      <input matInput formControlName="name" placeholder="Digite seu nome completo" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nome de Usuário</mat-label>
+      <mat-icon matPrefix>person_add</mat-icon>
+      <input matInput formControlName="username" placeholder="Escolha um nome de usuário" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Senha</mat-label>
+      <mat-icon matPrefix>lock</mat-icon>
+      <input matInput type="password" formControlName="password" placeholder="Crie uma senha" maxlength="12" />
+      <mat-hint>Pelo menos 12 caracteres</mat-hint>
+    </mat-form-field>
+
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <div *ngIf="isLoading" class="loading-container">
+      <mat-spinner></mat-spinner>
+      <span></span>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="onRegister()" class="login-button">
+      <mat-icon fontIcon="person_add"></mat-icon>
+      <span *ngIf="!isLoading">Registrar</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <div class="register-section flex col al-center">
+      <div>
+        Já possui uma conta?
+      </div>
+      <button mat-stroked-button (click)="onGoToLogin()" class="link-button">
+        Voltar
+      </button>
+    </div>
+  </form>
+</mat-card>

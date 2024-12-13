@@ -1,0 +1,26 @@
+<mat-toolbar id="topbar">
+  <button
+    id="toggle-sidebar"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Toggle Sidebar"
+    (click)="toggleSidebar()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img class="logo" src="../../../assets/new_logo_Pacto_sistema_para_Academia_color.webp" />
+  <span class="example-spacer"></span>
+  <mat-chip
+    style="margin-left: 100px"
+    *ngIf="user"
+    color="accent"
+    (click)="goToProfile()"
+  >
+    <img
+      matChipAvatar
+      src="./assets/user.png"
+      class="user-avatar"
+    />
+    <span class="user-name">{{ user.username }}</span>
+  </mat-chip>
+</mat-toolbar>
