@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LoginComponent } from './component/login/login.component';
@@ -23,7 +22,6 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import { FooterInfoComponent } from './component/footer-info/footer-info.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {DashboardPageComponent} from "./pages/dashboard-page/dashboard-page.component";
-import {ScrollToTopComponent} from "./component/scroll-to-top/scroll-to-top.component";
 import {SidebarComponent} from "./component/sidebar/sidebar.component";
 import {TopbarComponent} from "./component/topbar/topbar.component";
 import {LogoutDialogComponent} from "./component/logout-dialog/logout-dialog.component";
@@ -32,6 +30,13 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatButtonModule} from "@angular/material/button";
+import {JobListComponent} from "./component/job-list/job-list.component";
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import {CandidateDashboardComponent} from "./pages/candidate-page/candidateDashboardComponent";
+import {CreateJobComponent} from "./pages/create-job-page/create-job.component";
+import {SuccessDialogComponent} from "./component/success-dialog/success-dialog.component";
+
 
 @NgModule({
   declarations: [
@@ -43,10 +48,13 @@ import {MatButtonModule} from "@angular/material/button";
     RegisterComponent,
     FooterInfoComponent,
     DashboardPageComponent,
-    ScrollToTopComponent,
     SidebarComponent,
     TopbarComponent,
-    LogoutDialogComponent
+    LogoutDialogComponent,
+    JobListComponent,
+    CandidateDashboardComponent,
+    CreateJobComponent,
+    SuccessDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -70,9 +78,15 @@ import {MatButtonModule} from "@angular/material/button";
     MatChipsModule,
     MatMenuModule,
     MatBadgeModule,
-    MatButtonModule
+    MatButtonModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

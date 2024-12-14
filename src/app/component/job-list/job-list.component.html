@@ -1,0 +1,40 @@
+<div class="search-container">
+  <mat-form-field appearance="fill" class="search-field">
+    <mat-label>Buscar vaga</mat-label>
+    <input
+      matInput
+      [(ngModel)]="searchTerm"
+      (input)="searchJobs()"
+      placeholder="Digite o título da vaga..."
+    />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
+
+<div class="job-list">
+  <mat-card class="job-card" *ngFor="let job of filteredJobs">
+    <mat-card-header>
+      <mat-card-title>{{ job.title }}</mat-card-title>
+      <mat-card-subtitle>
+        Criado em: {{ job.dateEntity.register | date:'dd/MM/yyyy' }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ job.description }}</p>
+    </mat-card-content>
+    <mat-card-actions  *ngIf="!isAdmin()">
+      <button mat-button color="primary" (click)="applyToJob(job.id)">Aplicar</button>
+    </mat-card-actions>
+
+    <mat-card-actions *ngIf="isAdmin() && job.createdById === userId">
+      <button mat-button color="warn" (click)="deleteJob(job.id)">
+        <mat-icon>delete</mat-icon> Deletar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+</div>

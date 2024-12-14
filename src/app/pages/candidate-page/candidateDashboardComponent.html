@@ -1,0 +1,52 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+
+<div class="candidate-dashboard">
+  <h2>Meu Painel de Candidaturas</h2>
+
+  <div *ngIf="applications.length > 0; else noApplications">
+    <div *ngFor="let application of applications">
+      <mat-card class="application-card">
+        <mat-card-header>
+          <mat-card-title>{{ application.jobVacancy.title }}</mat-card-title>
+          <mat-card-subtitle>{{ application.status | titlecase }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p><strong>Descrição:</strong> {{ application.jobVacancy.description }}</p>
+
+          <div class="required-skills">
+            <p><strong>Habilidades Requeridas:</strong></p>
+            <ul>
+              <li *ngFor="let skill of application.jobVacancy.requiredSkills">
+                {{ skill.skillName }} ({{ skill.experienceYears }} anos de experiência)
+              </li>
+            </ul>
+          </div>
+
+          <!-- Feedback Section (se disponível) -->
+          <div *ngIf="application.feedback" class="feedback">
+            <h3>Feedback:</h3>
+            <p>{{ application.feedback }}</p>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button color="accent" [routerLink]="['/job-details', application.jobVacancy.id]">
+            Ver Detalhes da Vaga
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <ng-template #noApplications>
+    <mat-card class="no-applications-card">
+      <mat-card-content>
+        <p>Você ainda não se candidatou a nenhuma vaga.</p>
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
+</div>
+
+<app-footer-info></app-footer-info>

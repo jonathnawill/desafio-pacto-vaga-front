@@ -1,0 +1,69 @@
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 35px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #3f51b5;
+  margin-bottom: 20px;
+}
+
+
+.job-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.form-field {
+  width: 100%;
+}
+
+.compact input,
+.compact textarea,
+.compact mat-select {
+  padding: 10px !important;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.new-skill {
+  margin-top: 30px;
+}
+
+.new-skill h3 {
+  font-size: 18px;
+  color: #3f51b5;
+  margin-bottom: 10px;
+}
+
+.create-skill-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+}

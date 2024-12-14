@@ -9,20 +9,28 @@
   box-shadow: 0px 0px 11px 2px rgba(0, 0, 0, 0.59);
 }
 
-/* Estilização para o avatar */
+
+.toolbar-text {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #001fea;
+  flex-grow: 20;
+  padding: 0 20px;
+}
+
+
 .user-avatar {
-  width: 40px;  /* Ajuste o tamanho do avatar */
-  height: 40px; /* Ajuste o tamanho do avatar */
-  border-radius: 50%; /* Deixa o avatar redondo */
-  object-fit: cover;  /* Garante que a imagem se ajuste bem */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 mat-chip {
-  padding: 0.5rem;  /* Ajusta o padding para dar mais espaço ao chip */
-  font-size: 14px;  /* Ajusta o tamanho da fonte, caso necessário */
+  padding: 0.5rem;
+  font-size: 14px;
 }
-
-
 
 .example-spacer {
   flex: 1 1 auto;

@@ -23,3 +23,18 @@
     width: 120vw;
   }
 }
+
+.create-job-button {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 40px 40px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.create-job-button mat-button {
+  width: 100%;  /* Faz o botão preencher todo o espaço disponível */
+}
+

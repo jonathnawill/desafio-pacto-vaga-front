@@ -41,8 +41,7 @@ export class SidebarComponent {
     };
   }
 
-  navigateTo(route: string) {
-    this.router.navigate(['/dashboard/' + route]);
-    this.sidebarService.toggleSidebar();
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
   }
 }
