@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CandidacyService {
-  private apiUrl = 'http://localhost:8080/api/candidacy';
+  private apiUrl = 'https://desafio-pacto-vaga-back-production.up.railway.app/api/candidacy';
 
   constructor(private http: HttpClient) {}
 

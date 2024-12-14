@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 export class AuthService {
   private jwtHelper: JwtHelperService = new JwtHelperService();
   private apiUrl =
-    'http://localhost:8080/api/auth';
+    'https://desafio-pacto-vaga-back-production.up.railway.app/api/auth';
 
   private tokenExpiredNotification: boolean = false;
 

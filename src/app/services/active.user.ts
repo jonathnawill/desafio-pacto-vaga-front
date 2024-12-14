@@ -27,7 +27,7 @@ export class ActiveUser {
   }
 
   getUserById(userId: string): Observable<any> {
-    const url = `http://localhost:8080/api/user/${userId}`;
+    const url = `https://desafio-pacto-vaga-back-production.up.railway.app/api/user/${userId}`;
     return this.http.get<any>(url);
   }
 }

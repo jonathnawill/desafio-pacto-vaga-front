@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SkillService {
-  private apiUrl = 'http://localhost:8080/api/skill';
+  private apiUrl = 'https://desafio-pacto-vaga-back-production.up.railway.app/api/skill';
 
   constructor(private http: HttpClient) {}
 
