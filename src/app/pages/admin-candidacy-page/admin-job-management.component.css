@@ -1,0 +1,123 @@
+.admin-job-management {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  margin-top: 50px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.job-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.job-card {
+  width: 300px;
+  padding: 1rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.skills-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skills-list li {
+  margin-bottom: 5px;
+}
+
+.candidacy-list {
+  margin-top: 40px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.candidacy-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-item strong {
+  font-weight: bold;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-select, mat-textarea {
+  width: 100%;
+}
+
+button {
+  align-self: flex-start;
+  margin-top: 10px;
+}
+
+.mat-expansion-panel-header {
+  background-color: #f5f5f5;
+  padding: 15px;
+}
+
+.mat-expansion-panel-body {
+  padding: 20px;
+  background-color: #fafafa;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+p {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .job-card {
+    width: 100%;
+    margin: 0 10px;
+  }
+
+  .candidacy-info {
+    gap: 15px;
+  }
+
+  .info-item {
+    gap: 10px;
+  }
+}
+

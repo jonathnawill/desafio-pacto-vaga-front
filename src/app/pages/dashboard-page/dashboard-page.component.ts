@@ -26,6 +26,7 @@ export class DashboardPageComponent {
       return false;
     }
   }
+
   navigateToCreateJob(route: string): void {
     this.router.navigate([route]);
   }

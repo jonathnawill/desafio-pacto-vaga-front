@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { JobService } from '../../services/job.service';
 import { AuthService } from '../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-import {SuccessDialogComponent} from "../success-dialog/success-dialog.component";
+import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { CandidacyService } from "../../services/candidacy.service";
+import { ErrorDialogComponent } from "../error-dialog/error-dialog.component";
+import { CandidacyDialogComponent } from '../candidacy-dialog/candidacy-dialog.component';
 
 @Component({
   selector: 'app-job-list',
@@ -20,9 +24,9 @@ export class JobListComponent implements OnInit {
   constructor(
     private jobService: JobService,
     private authService: AuthService,
+    private candidacyService: CandidacyService,
     private matDialog: MatDialog
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.loadJobs();
@@ -68,44 +72,78 @@ export class JobListComponent implements OnInit {
   }
 
   applyToJob(jobId: number): void {
-    alert(`Aplicação enviada para a vaga ${jobId}`);
+    if (this.userId) {
+      const dialogRef = this.matDialog.open(CandidacyDialogComponent, {
+        width: '400px'
+      });
+
+      dialogRef.afterClosed().subscribe((additionalInfo) => {
+        if (additionalInfo) {
+          this.isLoading = true;
+          if (this.userId != null) {
+            this.candidacyService.applyForJob(this.userId, jobId, additionalInfo).subscribe(
+              (response) => {
+                this.isLoading = false;
+                this.openSuccessDialog('Candidatura enviada com sucesso!');
+              },
+              (error) => {
+                this.isLoading = false;
+                console.error('Erro ao enviar candidatura:', error);
+                const errorMessage = error.error?.message || 'Erro desconhecido ao enviar candidatura.';
+                this.openErrorDialog(errorMessage);
+              }
+            );
+          }
+        }
+      });
+    } else {
+      alert('Você precisa estar logado para se candidatar.');
+    }
+  }
+
+  openErrorDialog(message: string): void {
+    this.matDialog.open(ErrorDialogComponent, {
+      width: '400px',
+      data: { message }
+    });
+  }
+
+  openSuccessDialog(message: string): void {
+    this.matDialog.open(SuccessDialogComponent, {
+      width: '400px',
+      data: { message },
+    });
   }
 
   openDeleteDialog(jobId: number): void {
-    const dialogRef = this.matDialog.open(SuccessDialogComponent, {
+    const dialogRef = this.matDialog.open(AlertDialogComponent, {
       width: '400px',
-      data: {message: 'Tem certeza que deseja excluir esta vaga?'}
+      data: {
+        title: 'Confirmar Exclusão',
+        message: 'Tem certeza que deseja excluir esta vaga?',
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result === 'yes') {
+      if (result === 'sim') {
         this.deleteJob(jobId);
       }
     });
   }
 
   deleteJob(jobId: number): void {
-    const dialogRef = this.matDialog.open(SuccessDialogComponent, {
-      width: '400px',
-      data: {message: 'Tem certeza que deseja excluir esta vaga?'}
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result === 'yes') {
-        this.isLoading = true;
-        this.jobService.deleteJob(jobId).subscribe(
-          () => {
-            this.isLoading = false;
-            this.loadJobs();  // Recarregar as vagas após a exclusão
-          },
-          (error) => {
-            this.isLoading = false;
-            console.error('Erro ao excluir vaga', error);
-            alert('Erro ao excluir vaga!');
-          }
-        );
+    this.isLoading = true;
+    this.jobService.deleteJob(jobId).subscribe(
+      () => {
+        this.isLoading = false;
+        this.loadJobs();  // Recarregar as vagas após a exclusão
+        this.openSuccessDialog('Vaga excluída com sucesso!');
+      },
+      (error) => {
+        this.isLoading = false;
+        console.error('Erro ao excluir vaga', error);
+        alert('Erro ao excluir vaga!');
       }
-    });
+    );
   }
-
 }

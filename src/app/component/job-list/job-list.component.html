@@ -21,13 +21,16 @@
     </mat-card-header>
     <mat-card-content>
       <p>{{ job.description }}</p>
+
+      <p>{{ job.requiredSkills[0].skillName }}</p>
+
     </mat-card-content>
     <mat-card-actions  *ngIf="!isAdmin()">
       <button mat-button color="primary" (click)="applyToJob(job.id)">Aplicar</button>
     </mat-card-actions>
 
     <mat-card-actions *ngIf="isAdmin() && job.createdById === userId">
-      <button mat-button color="warn" (click)="deleteJob(job.id)">
+      <button mat-button color="warn" (click)="openDeleteDialog(job.id)">
         <mat-icon>delete</mat-icon> Deletar
       </button>
     </mat-card-actions>

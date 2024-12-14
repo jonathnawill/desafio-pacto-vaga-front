@@ -6,6 +6,7 @@ import {DashboardPageComponent} from "./pages/dashboard-page/dashboard-page.comp
 import {AuthGuard} from "./guards/auth.guard";
 import {CandidateDashboardComponent} from "./pages/candidate-page/candidateDashboardComponent";
 import {CreateJobComponent} from "./pages/create-job-page/create-job.component";
+import {AdminJobManagementComponent} from "./pages/admin-candidacy-page/admin-job-management.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard],},
   { path: 'candidate-dashboard', component: CandidateDashboardComponent, canActivate: [AuthGuard] },
   { path: 'create-job', component: CreateJobComponent, canActivate: [AuthGuard] },
+  { path: 'admin/candidacies', component: AdminJobManagementComponent, canActivate: [AuthGuard] },
 
 ];
 

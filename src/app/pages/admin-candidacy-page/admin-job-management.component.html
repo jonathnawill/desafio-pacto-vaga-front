@@ -1,0 +1,92 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+
+<div class="admin-job-management">
+  <h2>Gestão de Vagas e Candidaturas</h2>
+
+  <div *ngIf="isLoadingJobs" class="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <p>Carregando vagas...</p>
+  </div>
+
+  <div *ngIf="!isLoadingJobs && jobs.length > 0" class="job-list">
+    <mat-card *ngFor="let job of jobs" class="job-card">
+      <mat-card-header class="job-card-header">
+        <mat-card-title>{{ job.title }}</mat-card-title>
+        <mat-card-subtitle>{{ job.description }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Habilidades Requeridas:</strong></p>
+        <ul class="skills-list">
+          <li *ngFor="let skill of job.requiredSkills">{{ skill.skillName }}</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="loadCandidacies(job.id)">
+          Ver Candidatos
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!isLoadingJobs && jobs.length === 0">
+    <p>Nenhuma vaga encontrada.</p>
+  </div>
+
+  <div *ngIf="candidacies.length > 0 && selectedJobId" class="candidacy-list">
+    <h3>Candidatos para a vaga: {{ getSelectedJobTitle() }}</h3>
+
+    <mat-table [dataSource]="candidacies" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Nome do Candidato </mat-header-cell>
+        <mat-cell *matCellDef="let candidacy"> {{ candidacy.user.name }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status Atual </mat-header-cell>
+        <mat-cell *matCellDef="let candidacy">
+    <span [ngClass]="{
+      'status-approved': candidacy.status === 'APROVADO',
+      'status-rejected': candidacy.status === 'REJEITADO',
+      'status-pending': candidacy.status === 'PENDENTE'
+    }">
+      {{ candidacy.status | titlecase }}
+    </span>
+        </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="feedback">
+        <mat-header-cell *matHeaderCellDef> Feedback </mat-header-cell>
+        <mat-cell *matCellDef="let candidacy">
+          <span>{{ candidacy.feedback | titlecase }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="additionalInfo">
+        <mat-header-cell *matHeaderCellDef> Informações Adicionais </mat-header-cell>
+        <mat-cell *matCellDef="let candidacy">
+          <span>{{ candidacy.additionalInfo || 'Nenhum comentário disponível' }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Ação </mat-header-cell>
+        <mat-cell *matCellDef="let candidacy">
+          <button mat-raised-button color="primary" (click)="openFeedbackDialog(candidacy)">
+            Atualizar
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+  <div *ngIf="candidacies.length === 0 && selectedJobId">
+    <p>Nenhum candidato encontrado para esta vaga.</p>
+  </div>
+</div>
+
+<app-footer-info></app-footer-info>

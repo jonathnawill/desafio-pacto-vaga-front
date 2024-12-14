@@ -36,6 +36,13 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {CandidateDashboardComponent} from "./pages/candidate-page/candidateDashboardComponent";
 import {CreateJobComponent} from "./pages/create-job-page/create-job.component";
 import {SuccessDialogComponent} from "./component/success-dialog/success-dialog.component";
+import {AlertDialogComponent} from "./component/alert-dialog/alert-dialog.component";
+import {ErrorDialogComponent} from "./component/error-dialog/error-dialog.component";
+import {AdminJobManagementComponent} from "./pages/admin-candidacy-page/admin-job-management.component";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {CandidacyDialogComponent} from "./component/candidacy-dialog/candidacy-dialog.component";
+import {MatTableModule} from "@angular/material/table";
+import { FeedbackDialogComponent } from './component/feedback-dialog/feedback-dialog.component';
 
 
 @NgModule({
@@ -54,7 +61,12 @@ import {SuccessDialogComponent} from "./component/success-dialog/success-dialog.
     JobListComponent,
     CandidateDashboardComponent,
     CreateJobComponent,
-    SuccessDialogComponent
+    SuccessDialogComponent,
+    AlertDialogComponent,
+    ErrorDialogComponent,
+    AdminJobManagementComponent,
+    CandidacyDialogComponent,
+    FeedbackDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +91,8 @@ import {SuccessDialogComponent} from "./component/success-dialog/success-dialog.
     MatMenuModule,
     MatBadgeModule,
     MatButtonModule,
+    MatExpansionModule,
+    MatTableModule,
   ],
   providers: [
     {

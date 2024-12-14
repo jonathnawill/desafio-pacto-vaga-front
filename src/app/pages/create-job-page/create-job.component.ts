@@ -101,13 +101,12 @@ export class CreateJobComponent implements OnInit {
   openSuccessDialog(): void {
     const dialogRef = this.matDialog.open(SuccessDialogComponent, {
       width: '400px',
-      data: {message: 'Vaga criada com sucesso! Deseja ir para o menu de vagas?'}
+      data: { message: 'Vaga criada com sucesso!' }
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result === 'yes') {
-        this.router.navigate(['/dashboard']);
-      }
+      this.router.navigate(['/dashboard']);
     });
   }
+
 }

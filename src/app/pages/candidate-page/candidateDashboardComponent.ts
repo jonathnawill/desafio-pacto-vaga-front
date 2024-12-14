@@ -28,7 +28,7 @@ export class CandidateDashboardComponent implements OnInit {
 
   loadCandidacies(): void {
     if (this.userId !== null) {
-      this.candidacyService.getCandidacies(this.userId).subscribe(
+      this.candidacyService.getCandidaciesByUser(this.userId).subscribe(
         (data) => {
           this.applications = data;
         },

@@ -1,0 +1,19 @@
+mat-dialog-content {
+  font-size: 16px;
+  color: #ff3b3b; /* Cor de texto vermelha para erro */
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  background-color: #ff3b3b;
+  color: white;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #e32e2e;
+}
