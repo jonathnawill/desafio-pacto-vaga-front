@@ -18,7 +18,6 @@ export class TopbarComponent implements OnInit {
 
   ngOnInit(): void {
     const userName = localStorage.getItem('username');
-    console.log(userName);
     if (userName) {
       this.user = {
         username: userName
